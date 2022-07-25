@@ -1,0 +1,23 @@
+
+.navbar{
+    height: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+}
+
+.link{
+    margin: 0px 15px;
+}
+
+.container{
+    width: 70%;
+    margin: auto;
+}
+
+.center{
+    text-align: center;
+}
