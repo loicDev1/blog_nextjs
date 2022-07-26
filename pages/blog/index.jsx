@@ -1,10 +1,17 @@
-import React from 'react'
+import React, {useState}  from 'react'
 import style from '../../styles/personal.module.css'
 import styles from '../../styles/Home.module.css'
 import Head from 'next/head'
 import Link from 'next/link'
 
-const index = ({ allArticles }) => {
+const Index = ({ allArticles }) => {
+  
+  const [component, setComponent] = useState('')
+
+  const loader = () => {
+    setComponent(<div className={style.chargement}>  </div>)
+  }
+
   const reduceTextLength = (text) => {
     const tab = []
     const textz = text.split('')
@@ -19,6 +26,9 @@ const index = ({ allArticles }) => {
   }
   return (
     <>
+      {
+        component
+      }
       <div className={style.center}>
         <h1>Bienvenue sur le blog</h1>
         <p> voici les article </p>
@@ -37,7 +47,7 @@ const index = ({ allArticles }) => {
               </div>
               <div>
                 <Link href={`blog/${article.id}`}>
-                  <a style={{ color: 'blue' }}> lire larticle </a>
+                  <a style={{ color: 'blue' }} onClick={loader} > lire larticle </a>
                 </Link>
               </div>
             </div>
@@ -48,7 +58,7 @@ const index = ({ allArticles }) => {
   )
 }
 
-export default index
+export default Index
 
 export async function getStaticProps() {
   const promisse = await fetch('https://jsonplaceholder.typicode.com/posts')
